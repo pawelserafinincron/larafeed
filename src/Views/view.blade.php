@@ -4,7 +4,7 @@
 
     <button data-html2canvas-ignore type="button"
         class="larabtn larafeed_button_blue larafeed_button btn btn-link bg-hover-info text-hover-white text-muted py-0 mx-4">
-        <i class="las la-mail"></i> @lang('Help us improving system')
+        <i class="las la-envelope"></i> @lang('Help us improving system')
     </button>
 
     <!-- Modal -->
