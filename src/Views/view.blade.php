@@ -24,8 +24,7 @@
                     value="{{ larafeedUser()->email }}" />
 
                 <div class="larafeed_field">
-                    <textarea class="larafeed_control autogrow" name="message" id="message" style="height: 130px;" required
-                        rows="5"></textarea>
+                    <textarea class="larafeed_control autogrow" name="message" id="message" style="min-height: 130px;" required></textarea>
                 </div>
 
                 <input type="hidden" name="ip" value="{{ request()->ip() }}">
