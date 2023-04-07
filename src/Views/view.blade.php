@@ -2,39 +2,28 @@
     <link rel="stylesheet" href="{{ asset('vendor/larafeed/css/larafeed.css') }}">
     <script src="{{ asset('vendor/larafeed/js/html2canvas.min.js') }}"></script>
 
-    <button data-html2canvas-ignore type="button" class="larabtn larafeed_button_blue larafeed_button btn btn-info">
-        {!! config('larafeed.button.title', '&#9993; Feedback') !!}
+    <button data-html2canvas-ignore type="button"
+        class="larabtn larafeed_button_blue larafeed_button btn btn-link btn-hover-info text-muted">
+        @lang('Help us improving system')
     </button>
 
-    <style>
-        .larafeed_button {
-            {{ larafeedButtonCSS() }};
-            bottom: {{ config('larafeed.button.y_margin', '25px') }};
-        }
-    </style>
-
     <!-- Modal -->
-    <div class="larafeed_modal" data-html2canvas-ignore>
+    <div class="larafeed_modal shadow" data-html2canvas-ignore>
         <form id="feedback_form" action="{{ route('larafeed_store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
 
-            <div class="larafeed_modal_content">
+            <div class="larafeed_modal_content p-4">
                 <div class="larafeed_modal_title">
-                    <strong>{!! config('larafeed.feedback.feedback_dialog_text', '') !!}</strong>
+                    <strong>@lang('Send your feedback')</strong>
                 </div>
 
+                <input type="hidden" class="larafeed_control" name="name" id="name"
+                    value="{{ larafeedUser()->name }}" />
+
+                <input type="hidden" class="larafeed_control" name="email" id="email"
+                    value="{{ larafeedUser()->email }}" />
+
                 <div class="larafeed_field">
-                    <label for="name">Name</label>
-                    <input type="text" class="larafeed_control" name="name" id="name"
-                        value="{{ larafeedUser()->name }}" required>
-                </div>
-                <div class="larafeed_field">
-                    <label for="email">Email</label>
-                    <input type="email" class="larafeed_control" name="email" id="email"
-                        value="{{ larafeedUser()->email }}" required>
-                </div>
-                <div class="larafeed_field">
-                    <label for="message">Message</label>
                     <textarea class="larafeed_control" name="message" id="message" style="height: 130px;" required></textarea>
                 </div>
 
@@ -47,8 +36,8 @@
                     value="{{ larafeedGetBrowser()->getPlatform() ?: 'Unknown' }}">
 
                 <div class="pull-right">
-                    <button type="button" class="larabtn larafeed_button_close">Close</button>
-                    <button type="submit" id="feedback_submit" class="larabtn larafeed_button_blue">Send Feedback
+                    <button type="button" class="larabtn larafeed_button_close">@lang('Close')</button>
+                    <button type="submit" id="feedback_submit" class="larabtn larafeed_button_blue">@lang('Send Feedback')
                     </button>
                 </div>
                 <div class="clear"></div>
