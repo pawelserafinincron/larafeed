@@ -3,8 +3,8 @@
     <script src="{{ asset('vendor/larafeed/js/html2canvas.min.js') }}"></script>
 
     <button data-html2canvas-ignore type="button"
-        class="larabtn larafeed_button_blue larafeed_button btn btn-link btn-hover-info text-muted">
-        @lang('Help us improving system')
+        class="larabtn larafeed_button_blue larafeed_button btn btn-link bg-hover-info text-hover-white text-muted py-0 mx-4">
+        <i class="las la-mail"></i> @lang('Help us improving system')
     </button>
 
     <!-- Modal -->
@@ -36,8 +36,10 @@
                     value="{{ larafeedGetBrowser()->getPlatform() ?: 'Unknown' }}">
 
                 <div class="pull-right">
-                    <button type="button" class="btn btn-default">@lang('Close')</button>
-                    <button type="submit" id="feedback_submit" class="btn btn-primary">@lang('Send Feedback')
+                    <button type="button"
+                        class="larabtn larafeed_button_close btn btn-default">@lang('Close')</button>
+                    <button type="submit" id="feedback_submit"
+                        class="larabtn larafeed_button_blue btn btn-primary">@lang('Send Feedback')
                     </button>
                 </div>
                 <div class="clear"></div>
