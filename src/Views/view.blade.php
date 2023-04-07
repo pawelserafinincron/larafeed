@@ -8,7 +8,7 @@
     </button>
 
     <!-- Modal -->
-    <div class="larafeed_modal shadow" data-html2canvas-ignore>
+    <div class="larafeed_modal shadow fs-6" data-html2canvas-ignore>
         <form id="feedback_form" action="{{ route('larafeed_store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
 
@@ -24,7 +24,7 @@
                     value="{{ larafeedUser()->email }}" />
 
                 <div class="larafeed_field">
-                    <textarea class="larafeed_control" name="message" id="message" style="height: 130px;" required></textarea>
+                    <textarea class="larafeed_control autogrow" name="message" id="message" style="height: 130px;" required></textarea>
                 </div>
 
                 <input type="hidden" name="ip" value="{{ request()->ip() }}">
