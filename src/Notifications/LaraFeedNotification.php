@@ -53,6 +53,12 @@ class LaraFeedNotification extends Notification
         $mailMessage->line('URL : ' . $this->feedback->uri);
         $mailMessage->line('Date : ' . $this->feedback->created_at);
 
+        if (config('larafeed.screenshots.capture_screenshots', true)) {
+            $outputPath = config('larafeed.screenshots.screenshots_store_folder');
+            
+            $mailMessage->attach($outputPath . DIRECTORY_SEPARATOR . $this->feedback->screenshot);
+        }
+
         return $mailMessage;
     }
 
