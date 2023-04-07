@@ -36,8 +36,8 @@
                     value="{{ larafeedGetBrowser()->getPlatform() ?: 'Unknown' }}">
 
                 <div class="pull-right">
-                    <button type="button" class="larabtn larafeed_button_close">@lang('Close')</button>
-                    <button type="submit" id="feedback_submit" class="larabtn larafeed_button_blue">@lang('Send Feedback')
+                    <button type="button" class="btn btn-default">@lang('Close')</button>
+                    <button type="submit" id="feedback_submit" class="btn btn-primary">@lang('Send Feedback')
                     </button>
                 </div>
                 <div class="clear"></div>
