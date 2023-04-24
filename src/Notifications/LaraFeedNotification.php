@@ -12,15 +12,19 @@ class LaraFeedNotification extends Notification
     use Queueable;
 
     public $feedback = null;
+    public $attachement = null;
+
 
     /**
      * Create a new notification instance.
      *
      * @param LaraFeedModel $feedback
      */
-    public function __construct(LaraFeedModel $feedback)
+    public function __construct(LaraFeedModel $feedback, $file)
     {
         $this->feedback = $feedback;
+        $this->attachement = $file;
+
     }
 
     /**
@@ -59,8 +63,11 @@ class LaraFeedNotification extends Notification
             $mailMessage->attach($outputPath . DIRECTORY_SEPARATOR . $this->feedback->screenshot);
         }
 
-        if($this->feedback->attachement) {
-            $mailMessage->attach($this->request->attachement);
+        if($this->attachement) {
+            $mailMessage->attach($this->attachement, [
+                'as' => $this->attachement->getClientOriginalName(),
+                'mime' => $this->attachement->getMimeType(),
+            ]);
         }
 
         return $mailMessage;

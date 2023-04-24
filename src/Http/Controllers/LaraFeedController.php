@@ -37,7 +37,7 @@ class LaraFeedController extends Controller
                 $model->save();
             }
 
-            $this->sendMail($model);
+            $this->sendMail($model, $request->hasFile('attachement') ? $request->attachement : null);
 
             event(new FeedbackReceivedEvent(collect($model)));
 
@@ -54,13 +54,13 @@ class LaraFeedController extends Controller
     /**
      * @param LaraFeedModel $model
      */
-    protected function sendMail(LaraFeedModel $model)
+    protected function sendMail(LaraFeedModel $model, $file)
     {
         try {
             if ($emails = config('larafeed.mail.mail_receivers', [])) {
                 foreach ($emails as $email) {
                     $recipient = new DynamicRecipient($email);
-                    $recipient->notify(new LaraFeedNotification($model));
+                    $recipient->notify(new LaraFeedNotification($model, $file));
                 }
             }
         } catch (\Exception $e) {
