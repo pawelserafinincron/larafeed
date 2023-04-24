@@ -59,6 +59,10 @@ class LaraFeedNotification extends Notification
             $mailMessage->attach($outputPath . DIRECTORY_SEPARATOR . $this->feedback->screenshot);
         }
 
+        if($this->feedback->attachement) {
+            $mailMessage->attach($this->request->attachement);
+        }
+
         return $mailMessage;
     }
 

@@ -35,9 +35,13 @@
                 <input type="hidden" name="os" id="os"
                     value="{{ larafeedGetBrowser()->getPlatform() ?: 'Unknown' }}">
 
+                <div class="larafeed_field">
+                    <input type="file" class="form-control" name="attachement" />
+                </div>
+
                 <div class="pull-right">
                     <button type="button"
-                        class="larabtn larafeed_button_close btn btn-default">@lang('Close')</button>
+                        class="larabtn larafeed_button_close btn btn-default">@lang('Cancel')</button>
                     <button type="submit" id="feedback_submit"
                         class="larabtn larafeed_button_blue btn btn-primary">@lang('Send Feedback')
                     </button>
